@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Image Processing Api</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <h1>Image Processing Api</h1>
+        <div class="container">
+            <% if (src && error === false) { %>
+                <a href=<%= src %> download title="download">
+                    <img src=<%= src %> alt ="img"/>
+                </a>
+             <% } else if (error === true ) {%>
+                <h2 class="error">image has failed to Process or does not exist</h2>
+            <% } else if (error === 'notValid') {%>  
+                <h2 class="error">Width or Height of image not valid</h2>
+            <% } else { %> 
+                <form method="post" enctype="multipart/form-data" action="/api">
+                    <input type="file" name="imageName" class="image" accept="image/*" />
+                    <input
+                        type="number"
+                        placeholder="width"
+                        name="width"
+                        class="w"
+                    />
+                    <input
+                        type="number"
+                        placeholder="height"
+                        name="height"
+                        class="h"
+                    />
+                    <div>
+                    <label for="N">Negative</label>
+                    <input type="checkbox" name="negate"  id="N"  value="true">
+                    </div>
+                    <input type="submit" value="resize" />
+                </form>
+            <% } %> 
+        </div>
+
+        <p class="api">http://localhost:3030/api?imageName={image name with extention}&width={image width }&height={image height}</p>
+        <p class="api">Examples:-</p>
+        <p class="api">http://localhost:3030/api?imageName=santamonica.jpg&width=200&height=300</p>
+        <p class="api">http://localhost:3030/api?imageName=fjord.jpg&width=600&height=200</p>
+        <p class="api">http://localhost:3030/api?imageName=fjord.jpg&width=900&height=400&negate=true</p>
+    </body>
+</html>
