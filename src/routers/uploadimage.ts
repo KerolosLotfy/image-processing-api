@@ -12,10 +12,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const uploadImages = express.Router();
-uploadImages.post('/api', upload.single('imageName'), (req, res) => {
-    res.redirect(
-        `api?imageName=${req.file?.filename}&width=${req.body.width}&height=${req.body.height}&negate=${req.body.negate}`
-    );
-});
+uploadImages.post(
+    '/api',
+    upload.single('imageName'),
+    (req: express.Request, res: express.Response): void => {
+        res.redirect(
+            `api?imageName=${req.file?.filename}&width=${req.body.width}&height=${req.body.height}&negate=${req.body.negate}`
+        );
+    }
+);
 
 export { uploadImages };
