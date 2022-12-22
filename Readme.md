@@ -42,5 +42,5 @@ make resizeing and  negative and also can you download your image after processi
  - GitHub
 
 ## Author:-
-# Kerolos Lotfy
+Kerolos Lotfy
 
